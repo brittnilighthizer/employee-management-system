@@ -35,6 +35,7 @@ function runSearch() {
                 "ADD DEPARTMENT",
                 "ADD ROLE",
                 "UPDATE EMPLOYEE ROLE",
+                "UPDATE MANAGER",
                 "exit"
             ]
         })
@@ -66,6 +67,10 @@ function runSearch() {
 
                 case "UPDATE EMPLOYEE ROLE":
                     employeeUpdate();
+                    break;
+
+                case "UPDATE MANAGER":
+                    managerUpdate();
                     break;
 
                 case "exit":
@@ -175,20 +180,48 @@ function employeeAdd() {
 };
 
 function employeeUpdate() {
-    console.log("Heyyy");
     inquirer.prompt([{
-        name: "first_name",
-        message: "What is the first name of the employee you would like to update?"
-    }, {
-        name: "manager_id",
-        message: "Any updates to the manager id of the employee"
+        name: "id",
+        message: "What is the id of the role you'd like to update?"
+    },
+    {
+        name: "title",
+        message: "What is the new role title?"
+    },
+    {
+        name: "salary",
+        message: "What is the salary for this role?"
+    },
+    {
+        name: "departmentid",
+        message: "What is the department ID of this role?"
     }
     ]).then(res => {
-        // connection.query("SELECT * FROM EMPLOYEE WHERE first_name = ?", {
-        //     first_name: res.first_name
-        // }, function (err, res) {
-            // console.log(res);
-        // }
-        // );
+        connection.query("UPDATE role SET title = ? , salary = ? , department_id = WHERE id = ? ", [
+            res.title,
+            res.salary,
+            res.departmentid,
+            res.id
+        ], function (err, res) {
+            if (err) throw err
+        });
+    })
+}
+
+function managerUpdate() {
+    inquirer.prompt([{
+        name: "last_name",
+        message: "What is the last name of the employee you'd like to update the manager for?"
+    }, {
+        name: "manager_id",
+        message: "What is the new manager ID you'd like to assign this employee too?"
+    }
+    ]).then(res => {
+        connection.query("UPDATE employee SET manager_id = ? WHERE last_name = ?", [
+            res.manager_id,
+            res.last_name
+        ], function (err, res) {
+            if (err) throw err
+        });
     })
 }
