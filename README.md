@@ -14,12 +14,25 @@ npm install
 ## Usage
 
 ```node index.js
-? What is the name of the Employee? [ ENTER RESPONSE ]
-? What is the Employee's ID ? [ ENTER RESPONSE ]
-? What is the Employee's email ? [ ENTER RESPONSE ]
-? title: (Use arrow keys) [ MANAGER | EMPLOYEE | ENGINEER | INTERN ]
+? What would you like to do? (Use arrow keys)    
+    [ VIEW all ROLES ] 
+    [ VIEW all DEPARTMENTS ]
+    [ ADD EMPLOYEE ]
+    [ ADD DEPARTMENT ]
+    [ ADD ROLE ]
+    [ UPDATE EMPLOYEE ROLE ]
+    [ UPDATE MANAGER ] *
+    [ exit ]
+
+? What is the last name of the employee you'd like to update the manager for?
+    [ ENTER RESPONSE ]
+? What is the new manager ID you'd like to assign this employee too?
+    [ ENTER RESPONSE ]
 
 ```
+
+![2020-03-02 16 54 56](https://user-images.githubusercontent.com/46901242/75725734-b937f480-5ca6-11ea-98a7-612168a5705d.gif)
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
